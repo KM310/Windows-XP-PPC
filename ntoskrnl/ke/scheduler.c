@@ -1,5 +1,6 @@
 //Copyright Julius (KM310)
 //written by Julius
+#include "ke.h"
 void KeSchedule(void) {
     ETHREAD* next = KeSelectNextThread();
     if (!next)
