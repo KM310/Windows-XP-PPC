@@ -1,0 +1,4 @@
+.global ExceptionHandler
+
+ExceptionHandler:
+    blr
