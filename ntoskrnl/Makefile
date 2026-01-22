@@ -1,24 +1,29 @@
-CC=powerpc-eabi-gcc
-AS=powerpc-eabi-as
-LD=powerpc-eabi-ld
-
+CC=powerpc-linux-gnu-gcc
 CFLAGS=-ffreestanding -nostdlib -O2 -Wall -Iinclude
-ASFLAGS=
-LDFLAGS=-T linker.ld
 
-SRC=$(shell find . -type f -name "*.c")
+# Source Dateien (C + ASM)
+SRC=$(shell find . -type f -name ".c") $(shell find . -type f -name ".s")
 OBJ=$(SRC:.c=.o)
+OBJ=$(OBJ:.s=.o)
 
-all: ntoskrnl.exe
+# Output
+TARGET=ntoskrnl.exe
 
-ntoskrnl.exe: arch/ppc/start.o $(OBJ)
-	$(LD) $(LDFLAGS) $^ -o ntoskrnl.exe
+# Standard Build
+all: $(TARGET)
 
+# Linken
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -T linker.ld $(OBJ) -o $(TARGET)
+
+# C-Dateien kompilieren
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-arch/ppc/start.o: arch/ppc/start.s
-	$(AS) $(ASFLAGS) $< -o $@
+# ASM-Dateien kompilieren
+%.o: %.s
+	$(CC) $(CFLAGS) -c $< -o $@
 
+# Clean
 clean:
-	rm -f $(OBJ) arch/ppc/start.o ntoskrnl.exe
+	rm -f $(OBJ) $(TARGET)
