@@ -5,7 +5,7 @@
 
 # Compiler & Flags
 CC=powerpc-linux-gnu-gcc
-CFLAGS=-ffreestanding -nostdlib -O2 -Wall -Iinclude
+CFLAGS=-ffreestanding -nostdlib -O2 -Wall -Iinclude -Ihal -Ike -Imm -Irtl
 
 # Source Dateien
 CSRC=$(shell find . -type f -name "*.c")
@@ -24,16 +24,16 @@ all: $(TARGET)
 
 # Linken
 $(TARGET): $(OBJ)
-<TAB>$(CC) $(CFLAGS) -T linker.ld $(OBJ) -o $(TARGET)
+	$(CC) $(CFLAGS) -T linker.ld $(OBJ) -o $(TARGET)
 
 # C-Dateien kompilieren
 %.o: %.c
-<TAB>$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # ASM-Dateien kompilieren
 %.o: %.s
-<TAB>$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Clean
 clean:
-<TAB>rm -f $(OBJ) $(TARGET)
+	rm -f $(OBJ) $(TARGET)
