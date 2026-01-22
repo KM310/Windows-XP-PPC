@@ -1,10 +1,20 @@
+# ----------------------------------------
+# NTOSKRNL PPC Build Makefile
+# Funktioniert unter Ubuntu + gcc-powerpc-linux-gnu
+# ----------------------------------------
+
+# Compiler & Flags
 CC=powerpc-linux-gnu-gcc
 CFLAGS=-ffreestanding -nostdlib -O2 -Wall -Iinclude
 
-# Source Dateien (C + ASM)
-SRC=$(shell find . -type f -name ".c") $(shell find . -type f -name ".s")
-OBJ=$(SRC:.c=.o)
-OBJ=$(OBJ:.s=.o)
+# Source Dateien
+CSRC=$(shell find . -type f -name "*.c")
+ASRC=$(shell find . -type f -name "*.s")
+
+# Objekt-Dateien
+COBJ=$(CSRC:.c=.o)
+AOBJ=$(ASRC:.s=.o)
+OBJ=$(COBJ) $(AOBJ)
 
 # Output
 TARGET=ntoskrnl.exe
@@ -14,16 +24,16 @@ all: $(TARGET)
 
 # Linken
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -T linker.ld $(OBJ) -o $(TARGET)
+<TAB>$(CC) $(CFLAGS) -T linker.ld $(OBJ) -o $(TARGET)
 
 # C-Dateien kompilieren
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+<TAB>$(CC) $(CFLAGS) -c $< -o $@
 
 # ASM-Dateien kompilieren
 %.o: %.s
-	$(CC) $(CFLAGS) -c $< -o $@
+<TAB>$(CC) $(CFLAGS) -c $< -o $@
 
 # Clean
 clean:
-	rm -f $(OBJ) $(TARGET)
+<TAB>rm -f $(OBJ) $(TARGET)
