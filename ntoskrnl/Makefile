@@ -17,7 +17,7 @@ AOBJ=$(ASRC:.s=.o)
 OBJ=$(COBJ) $(AOBJ)
 
 # Output
-TARGET=ntoskrnl.exe
+TARGET=wxposkrnl.exe
 
 # Standard Build
 all: $(TARGET)
