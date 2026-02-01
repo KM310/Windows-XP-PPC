@@ -4,10 +4,11 @@
 #  Independent reimplementation – no Microsoft code
 # =====================================================
 
-.section .text
-.globl _start
-
+    .globl _start
 _start:
+    lis r1, stack_top@h
+    ori r1, r1, stack_top@l
+
     bl NtKernelEntry
 
 hang:
