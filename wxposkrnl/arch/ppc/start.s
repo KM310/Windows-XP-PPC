@@ -5,11 +5,12 @@
 # =====================================================
 
     .globl _start
+    .type _start, @function
+
 _start:
-    lis r1, stack_top@h
-    ori r1, r1, stack_top@l
+    lis     r1, stack_top@ha
+    addi    r1, r1, stack_top@l
 
-    bl NtKernelEntry
+    bl      NtKernelEntry
 
-hang:
-    b hang
+1:  b       1b
