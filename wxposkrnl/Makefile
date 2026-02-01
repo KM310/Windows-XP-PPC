@@ -24,11 +24,11 @@ all: $(TARGET)
 
 # Linken
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -T linker.ld $(OBJ) -o $(TARGET)
+    $(CC) $(CFLAGS) -T linker.ld $(OBJ) -o $(TARGET)
 
 # C-Dateien kompilieren
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+    $(CC) $(CFLAGS) -c $< -o $@
 
 # ASM-Dateien kompilieren
 %.o: %.s
@@ -36,4 +36,4 @@ $(TARGET): $(OBJ)
 
 # Clean
 clean:
-	rm -f $(OBJ) $(TARGET)
+    rm -f $(OBJ) $(TARGET)
