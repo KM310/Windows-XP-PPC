@@ -1,7 +1,7 @@
 # ----------------------------------------
 # WXPOSKRNL PPC Build Makefile
 # Funktioniert unter Ubuntu + gcc-powerpc-linux-gnu
-#trying to fix missing seperator (1)
+#trying to fix missing seperator (2)
 # ----------------------------------------
 
 # Compiler & Flags
