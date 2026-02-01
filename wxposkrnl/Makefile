@@ -32,7 +32,7 @@ $(TARGET): $(OBJ)
 
 # ASM-Dateien kompilieren
 %.o: %.s
-	$(CC) $(CFLAGS) -c $< -o $@
+    $(CC) -x assembler-with-cpp $(CFLAGS) -c $< -o $@
 
 # Clean
 clean:
