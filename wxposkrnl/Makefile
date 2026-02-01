@@ -1,5 +1,5 @@
 # ----------------------------------------
-# NTOSKRNL PPC Build Makefile
+# WXPOSKRNL PPC Build Makefile
 # Funktioniert unter Ubuntu + gcc-powerpc-linux-gnu
 # ----------------------------------------
 
