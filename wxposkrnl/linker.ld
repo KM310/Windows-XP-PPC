@@ -21,7 +21,7 @@ SECTIONS
         *(COMMON)
     }
 
-    /* IMPORTEND*/
+    /* IMPORTEND 2 */
     .stack :
     {
         . = ALIGN(16);
