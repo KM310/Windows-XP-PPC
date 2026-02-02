@@ -21,7 +21,7 @@ SECTIONS
         *(COMMON)
     }
 
-    /* IMPORTEND 2 */
+    /* NEUER Abschnitt – absolut notwendig */
     .stack :
     {
         . = ALIGN(16);
