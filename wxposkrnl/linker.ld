@@ -21,6 +21,10 @@ SECTIONS
         *(COMMON)
     }
 
-    . = ALIGN(16);
-    stack_top = . + 0x4000;
+    /* WICHTIG: stack_top MUSS in einen eigenen Abschnitt */
+    .stack :
+    {
+        . = ALIGN(16);
+        stack_top = . + 0x4000;
+    }
 }
