@@ -21,7 +21,7 @@ SECTIONS
         *(COMMON)
     }
 
-    /* WICHTIG: stack_top MUSS in einen eigenen Abschnitt */
+    /* IMPORTEND*/
     .stack :
     {
         . = ALIGN(16);
